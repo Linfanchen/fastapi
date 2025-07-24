@@ -153,6 +153,7 @@ async def serialize_response(
     exclude_none: bool = False,
     is_coroutine: bool = True,
 ) -> Any:
+    """ 序列化响应结果 """
     if field:
         errors = []
         if not hasattr(field, "serialize"):
@@ -205,8 +206,7 @@ async def serialize_response(
 async def run_endpoint_function(
     *, dependant: Dependant, values: Dict[str, Any], is_coroutine: bool
 ) -> Any:
-    # Only called by get_request_handler. Has been split into its own function to
-    # facilitate profiling endpoints, since inner functions are harder to profile.
+    # 仅由get_request_handler调用。由于内部函数更难分析，因此将其拆分为独立的函数以方便分析端点。
     assert dependant.call is not None, "dependant.call must be a function"
 
     if is_coroutine:

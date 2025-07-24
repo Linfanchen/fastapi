@@ -47,6 +47,8 @@ AppType = TypeVar("AppType", bound="FastAPI")
 
 class FastAPI(Starlette):
     """
+    主应用
+
     `FastAPI` app class, the main entrypoint to use FastAPI.
 
     Read more in the
